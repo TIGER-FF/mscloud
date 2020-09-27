@@ -1,8 +1,5 @@
 language:
   - java
-jdk:
-  - oraclejdk1.8
-
 env:
   - TEST_DIR=goods8011
   - TEST_DIR=order8012
