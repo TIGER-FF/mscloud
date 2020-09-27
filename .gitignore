@@ -1,2 +1,6 @@
-target/
+/cart8014/target/**
+/cloud-eureka-server7001/target/**
+/gateway8000/target/**
+/order8012/target/**
+/security8013/target/**
 !/.mvn/wrapper/maven-wrapper.jar

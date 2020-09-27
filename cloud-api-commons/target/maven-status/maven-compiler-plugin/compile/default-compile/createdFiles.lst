@@ -1,0 +1,8 @@
+com\tigerff\springcloud\commons\entities\Page.class
+com\tigerff\springcloud\commons\entities\OrderItem.class
+com\tigerff\springcloud\commons\entities\MyUser.class
+com\tigerff\springcloud\commons\entities\CartItem.class
+com\tigerff\springcloud\commons\entities\Order.class
+com\tigerff\springcloud\commons\entities\CommonResult.class
+com\tigerff\springcloud\commons\entities\Goods.class
+com\tigerff\springcloud\commons\entities\Category.class
