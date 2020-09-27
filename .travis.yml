@@ -4,7 +4,7 @@ env:
   - TEST_DIR=goods8011
   - TEST_DIR=order8012
   - TEST_DIR=cart8014
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - TEST_DIR=cloud-api-commons
 
 before_install:
   - cd $TEST_DIR
