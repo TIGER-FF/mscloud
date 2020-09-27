@@ -1,0 +1,23 @@
+server:
+  port: 8012
+spring:
+  application:
+    name: cloud-order-service
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.tigerff.springcloud.commons.entities
+  configuration:
+    map-underscore-to-camel-case: true
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+      #defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+    fetch-registry: true
+  instance:
+    instance-id: order8012  #在eureka那块显示的名字
+    prefer-ip-address: true  # 当鼠标放在eureka那边名字上会在左下角显示ip地址
+logging:
+  level:
+    com.tigerff.springcloud.order8012.dao.* : debug

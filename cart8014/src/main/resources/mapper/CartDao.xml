@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tigerff.springcloud.cart8014.dao.CartDao">
+    <insert id="insertCartItem" parameterType="com.tigerff.springcloud.commons.entities.CartItem">
+            insert into table_cartItem values(null,#{goodsId},#{goodsName},#{goodsNum},#{goodsPrice},#{cartItemPrice},#{userId})
+    </insert>
+    <select id="getCartItemPageByUserId" resultType="com.tigerff.springcloud.commons.entities.CartItem">
+            select * from table_cartItem where user_id=#{userId} limit #{page},#{size}
+    </select>
+    <select id="getCartItemCount" resultType="long">
+            select count(*) from table_cartItem
+    </select>
+    <delete id="deleteCartItemById">
+        delete from table_cartItem where user_id=#{userId} and cartItem_id=#{cartItemId}
+    </delete>
+
+</mapper>

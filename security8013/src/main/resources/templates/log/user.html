@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>网上购物系统</title>
+    <link rel="stylesheet" th:href="@{${#httpServletRequest.getContextPath()}+'/static/css/bootstrap.min.css'}">
+    <style>
+        .container {
+            background: cornsilk;
+        }
+        img{
+            width: 100%;
+        }
+        ul{
+            border: 0;
+        }
+        .list-group-item{
+            margin-bottom: 0;
+            border: 0;
+            border-bottom: 1px dashed #ddd;
+            background-color: inherit;
+        }
+        .list2{
+            border-bottom: 0;
+        }
+        .panel-default>.panel-heading {
+            color: #e4393c;
+            background-color: #f7f7f7;
+            border-color: #fff;
+        }
+        .panel-default {
+             border-color: #fff;
+        }
+        .panel-group .panel-heading+.panel-collapse>.panel-body {
+             border-top: 1px solid #fff;
+        }
+        .save {
+            padding: 6px 30px;
+        }
+    </style>
+    <script type="text/javascript" th:src="@{${#httpServletRequest.getContextPath()}+'/static/js/jquery-3.3.1.js'}"></script>
+    <script th:src="@{${#httpServletRequest.getContextPath()}+'/static/js/bootstrap.js'}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#mobile").blur(function() {
+                var mobile=this.value;
+                mobile=$.trim(mobile);
+                if(mobile==""){
+                    $("#mobileRequierdSpan").text("电话号码不能为空");
+                }else{
+                    var regExp = /^(13[0-9]|15[0|1|3|6|7|8|9]|18[8|9])\d{8}$/;
+                    var ok = regExp.test(mobile);
+                    if(!ok){
+                        $("#mobileRequierdSpan").text("电话号码格式不正确");
+                    }else{
+                        $("#mobileRequierdSpan").text("");
+                    }
+                }
+            });
+            $("#email").blur(function() {
+                var email=this.value;
+                email=$.trim(email);
+                if(email==""){
+                    $("#emailRequierdSpan").text("邮箱不能为空");
+                }else{
+                    var regExp = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+                    var ok = regExp.test(email);
+                    if(!ok){
+                        $("#emailRequierdSpan").text("邮格式不正确");
+                    }else{
+                        $("#emailRequierdSpan").text("");
+                    }
+                }
+            });
+        });
+        //刷新页面
+        function myRefresh(){
+            window.location.reload();
+        }
+        //保存修改的数据
+        function mySave() {
+            var flag=true;
+            $.each($(".requierdSpan"),function(i,n){
+                if(this.innerHTML!=""){
+                    flag=false;
+                    return false;
+                }
+            });
+            if(!flag){
+                alert("数据非法请检查!");
+            }else{
+                var str={"userName": $("#name").val(),"userPhone":$("#mobile").val(),"userEmail":$("#email").val(),"userQq":$("#qq").val()};
+                //数据合格，要用ajax进行post数据的发送
+                $.ajax({
+                    url: "http://"+window.location.host+"/log/user",
+                    contentType:'application/json',
+                    data: JSON.stringify(str),
+                    type: "PUT",
+                    dataType: "json",
+                    async: false,
+                    success: function(data) {
+                        // data = jQuery.parseJSON(data);  //dataType指明了返回数据为json类型，故不需要再反序列化
+                        alert(data.data);
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+<!--顶部导航-->
+<div id="top-part"></div>
+<!--<div id="search-part"></div>-->
+
+<!--主体内容-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" style="background: #f7f7f7">
+            <ul class="list-group">
+                <li class="list-group-item">账号设置
+                    <ul class="list-group">
+                        <li class="list-group-item list2">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">基本信息</a>
+                        </li>
+                        <li class="list-group-item list2">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">教育资料</a>
+                        </li>
+                        <li class="list-group-item list2">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">其它信息</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item">
+                    <a href="order.html">我的订单</a>
+                    <ul class="list-group">
+                        <li class="list-group-item list2">
+                            全部订单
+                        </li>
+                        <li class="list-group-item list2">
+                            <span class="badge">14</span>
+                            待付款
+                        </li>
+                        <li class="list-group-item list2">
+                            <span class="badge">14</span>
+                            待收货
+                        </li>
+                        <li class="list-group-item list2">
+                            <span class="badge">14</span>
+                            待评价
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item">我的钱包</li>
+                <li class="list-group-item">我的理财</li>
+                <li class="list-group-item">地址管理</li>
+                <li class="list-group-item">安全设置</li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                基本信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="col-md-offset-1 col-md-7">
+                                <form class="form-horizontal" style="margin-top: 40px">
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-2 control-label">昵称</label>
+                                        <div class="col-sm-10">
+                                            <!--代码改写   用户的昵称是不能修改的-->
+                                            <input type="text" readonly="readonly" class="form-control" id="name" placeholder="昵称" th:value="${user.userName}" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">邮箱</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="email" placeholder="邮箱" th:value="${user.userEmail}">
+                                            <span id="emailRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile" class="col-sm-2 control-label">联系方式</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="mobile" placeholder="联系方式" th:value="${user.userPhone}">
+                                            <span id="mobileRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="qq" class="col-sm-2 control-label">QQ</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="qq" placeholder="QQ" th:value="${user.userQq}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-8">
+                                            <button type="button" class="btn btn-success save" onclick="myRefresh()">重置</button>
+                                            <button type="button" class="btn btn-success save" onclick="mySave()">保存</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                教育资料
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="col-md-offset-1 col-md-7">
+                                <form class="form-horizontal" style="margin-top: 40px">
+                                    <div class="form-group">
+                                        <label for="input6" class="col-sm-2 control-label">昵称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input6" placeholder="昵称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input7" class="col-sm-2 control-label">word</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input7" placeholder="word">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input8" class="col-sm-2 control-label">昵称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input8" placeholder="昵称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input9" class="col-sm-2 control-label">word</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input9" placeholder="word">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input10" class="col-sm-2 control-label">word</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input10" placeholder="word">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-8">
+                                            <button type="button" class="btn btn-success save">重置</button>
+                                            <button type="button" class="btn btn-success save">保存</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                其它信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="col-md-offset-1 col-md-7">
+                                <form class="form-horizontal" style="margin-top: 40px">
+                                    <div class="form-group">
+                                        <label for="input11" class="col-sm-2 control-label">昵称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input11" placeholder="昵称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input12" class="col-sm-2 control-label">word</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input12" placeholder="word">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input13" class="col-sm-2 control-label">昵称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input13" placeholder="昵称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input14" class="col-sm-2 control-label">word</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input14" placeholder="word">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input15" class="col-sm-2 control-label">word</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="input15" placeholder="word">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-8">
+                                            <button type="button" class="btn btn-success save">重置</button>
+                                            <button type="button" class="btn btn-success save">保存</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{${#httpServletRequest.getContextPath()}+'/static/js/jquery-3.3.1.js'}"></script>
+<script th:src="@{${#httpServletRequest.getContextPath()}+'/static/js/bootstrap.js'}"></script>
+<script type="text/javascript">
+    $("#top-part").load("http://"+window.location.host+"/index/top_part");
+    $("#search-part").load("http://"+window.location.host+"/index/search_part");
+</script>
+</html>

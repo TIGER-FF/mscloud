@@ -1,0 +1,27 @@
+server:
+  port: 8013
+spring:
+  application:
+    name: cloud-user-service
+  mvc:
+    view:
+      prefix: classpath:/templates/**
+      suffix: .html
+    static-path-pattern: /static/**
+mybatis:
+  type-aliases-package: com.tigerff.springcloud.commons.entities
+  configuration:
+    map-underscore-to-camel-case: true
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+      #defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+    fetch-registry: true
+logging:
+  level:
+    com.togerff.springcloud.security8013.mapper.* : debug
+feign:
+  hystrix:
+    enabled: true

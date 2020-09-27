@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tigerff.springcloud.order8012.dao.OrderDao">
+
+    <select id="getOrderPage" resultType="com.tigerff.springcloud.commons.entities.Order">
+            select * from table_order where user_id=#{userId} limit #{page},#{size}
+    </select>
+    <select id="getOrderCount" resultType="long" parameterType="long">
+            select count(*) from table_order where user_id=#{userId}
+    </select>
+    <!--记录一下keyProperty里面写的是属性的名字不是数据库的字段-->
+    <insert id="createOrder" parameterType="com.tigerff.springcloud.commons.entities.Order" useGeneratedKeys="true" keyProperty="orderId" keyColumn="order_id">
+            insert into  table_order values(null,#{orderPrice},#{userId})
+    </insert>
+    <delete id="deleteOrderById" parameterType="long">
+        delete from table_order where order_id=#{orderId}
+    </delete>
+
+</mapper>

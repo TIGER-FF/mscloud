@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tigerff.springcloud.order8012.dao.OrderItemDao">
+    <select id="getOrderItemsByOrderId" resultType="com.tigerff.springcloud.commons.entities.OrderItem">
+            select * from table_orderItem where order_id=#{orderId}
+    </select>
+
+     <insert id="insertOrder" parameterType="com.tigerff.springcloud.commons.entities.OrderItem" useGeneratedKeys="true" keyProperty="orderItemId" keyColumn="orderItem_id">
+                insert into  table_orderItem values(null,#{goodsId},#{goodsName},#{goodsNum},#{goodsPrice},#{orderItemPrice},#{orderId})
+     </insert>
+</mapper>

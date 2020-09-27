@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<style>
+    .search-group {
+        width: 35%;
+        margin: 0 auto;
+        padding: 30px 0 50px 0;
+        background: #fff;
+    }
+    .form-control{
+        height: 47px;
+    }
+    .btn-search{
+        padding: 9px 26px;
+        background: #e4393c;
+        color: #fff;
+        font-size: 19px;
+    }
+    .btn-search:hover {
+        color: #fff;
+        background-color: #f66060;
+    }
+</style>
+<div class="search-group">
+    <div class="input-group">
+        <input type="text" class="form-control" id="search-part-input" placeholder="Search for...">
+        <span class="input-group-btn">
+        <button class="btn btn-search" type="button"  onclick=javascrtpt:jump()>搜索</button>
+        </span>
+    </div>
+</div>
+<script type="text/javascript">
+        function jump(){
+            window.location.href="/index/search?searchText="+$('#search-part-input').val();
+        }
+</script>
+</head>
+</html>
