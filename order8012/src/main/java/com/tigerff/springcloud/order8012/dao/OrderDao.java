@@ -1,8 +1,8 @@
 package com.tigerff.springcloud.order8012.dao;
 
 
-import com.tigerff.springcloud.commons.entities.Order;
-import com.tigerff.springcloud.commons.entities.OrderItem;
+import com.tigerff.springcloud.order8012.entities.Order;
+import com.tigerff.springcloud.order8012.entities.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

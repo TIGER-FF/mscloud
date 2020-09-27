@@ -1,9 +1,9 @@
 package com.tigerff.springcloud.order8012.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tigerff.springcloud.commons.entities.Goods;
-import com.tigerff.springcloud.commons.entities.Order;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.order8012.entities.Goods;
+import com.tigerff.springcloud.order8012.entities.Order;
+import com.tigerff.springcloud.order8012.entities.Page;
 import com.tigerff.springcloud.order8012.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

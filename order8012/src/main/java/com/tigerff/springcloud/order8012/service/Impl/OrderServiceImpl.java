@@ -1,10 +1,10 @@
 package com.tigerff.springcloud.order8012.service.Impl;
 
 
-import com.tigerff.springcloud.commons.entities.CartItem;
-import com.tigerff.springcloud.commons.entities.Order;
-import com.tigerff.springcloud.commons.entities.OrderItem;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.order8012.entities.CartItem;
+import com.tigerff.springcloud.order8012.entities.Order;
+import com.tigerff.springcloud.order8012.entities.OrderItem;
+import com.tigerff.springcloud.order8012.entities.Page;
 import com.tigerff.springcloud.order8012.dao.OrderDao;
 import com.tigerff.springcloud.order8012.dao.OrderItemDao;
 import com.tigerff.springcloud.order8012.service.OrderService;

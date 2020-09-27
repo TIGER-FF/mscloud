@@ -1,8 +1,7 @@
 package com.tigerff.springcloud.order8012.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sun.jersey.core.util.MultivaluedMapImpl;
-import com.tigerff.springcloud.commons.entities.OrderItem;
+import com.tigerff.springcloud.order8012.entities.OrderItem;
 import com.tigerff.springcloud.order8012.service.OrderItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +14,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-
-
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.util.MultiValueMap.*;
+
 /**
  * @author tigerff
  * @version 1.0

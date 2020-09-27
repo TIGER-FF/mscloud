@@ -1,7 +1,7 @@
 package com.tigerff.springcloud.cart8014.service;
 
-import com.tigerff.springcloud.commons.entities.CartItem;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.cart8014.entities.CartItem;
+import com.tigerff.springcloud.cart8014.entities.Page;
 
 import java.util.List;
 

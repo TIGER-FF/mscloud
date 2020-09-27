@@ -1,8 +1,8 @@
 package com.tigerff.springcloud.goods8011.service.Impl;
 
-import com.tigerff.springcloud.commons.entities.Category;
-import com.tigerff.springcloud.commons.entities.Goods;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.goods8011.entities.Category;
+import com.tigerff.springcloud.goods8011.entities.Goods;
+import com.tigerff.springcloud.goods8011.entities.Page;
 import com.tigerff.springcloud.goods8011.dao.GoodsDao;
 import com.tigerff.springcloud.goods8011.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;

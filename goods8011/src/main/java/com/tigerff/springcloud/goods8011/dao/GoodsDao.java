@@ -1,7 +1,7 @@
 package com.tigerff.springcloud.goods8011.dao;
 
-import com.tigerff.springcloud.commons.entities.Category;
-import com.tigerff.springcloud.commons.entities.Goods;
+import com.tigerff.springcloud.goods8011.entities.Category;
+import com.tigerff.springcloud.goods8011.entities.Goods;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

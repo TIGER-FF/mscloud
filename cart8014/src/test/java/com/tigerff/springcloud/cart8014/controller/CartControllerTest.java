@@ -2,7 +2,7 @@ package com.tigerff.springcloud.cart8014.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tigerff.springcloud.cart8014.service.CartService;
-import com.tigerff.springcloud.commons.entities.CartItem;
+import com.tigerff.springcloud.cart8014.entities.CartItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

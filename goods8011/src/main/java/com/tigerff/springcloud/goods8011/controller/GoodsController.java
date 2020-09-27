@@ -1,17 +1,18 @@
 package com.tigerff.springcloud.goods8011.controller;
 
 
-import com.tigerff.springcloud.commons.entities.Category;
-import com.tigerff.springcloud.commons.entities.CommonResult;
-import com.tigerff.springcloud.commons.entities.Goods;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.goods8011.entities.Category;
+import com.tigerff.springcloud.goods8011.entities.CommonResult;
+import com.tigerff.springcloud.goods8011.entities.Goods;
+import com.tigerff.springcloud.goods8011.entities.Page;
 import com.tigerff.springcloud.goods8011.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

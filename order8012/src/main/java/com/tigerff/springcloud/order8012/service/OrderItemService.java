@@ -1,6 +1,6 @@
 package com.tigerff.springcloud.order8012.service;
 
-import com.tigerff.springcloud.commons.entities.OrderItem;
+import com.tigerff.springcloud.order8012.entities.OrderItem;
 
 import java.util.List;
 

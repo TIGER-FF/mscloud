@@ -2,8 +2,8 @@ package com.tigerff.springcloud.cart8014.service.Impl;
 
 import com.tigerff.springcloud.cart8014.dao.CartDao;
 import com.tigerff.springcloud.cart8014.service.CartService;
-import com.tigerff.springcloud.commons.entities.CartItem;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.cart8014.entities.CartItem;
+import com.tigerff.springcloud.cart8014.entities.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

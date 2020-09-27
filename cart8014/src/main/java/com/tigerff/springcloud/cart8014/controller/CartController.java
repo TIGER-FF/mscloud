@@ -1,9 +1,9 @@
 package com.tigerff.springcloud.cart8014.controller;
 
 import com.tigerff.springcloud.cart8014.service.CartService;
-import com.tigerff.springcloud.commons.entities.CartItem;
-import com.tigerff.springcloud.commons.entities.CommonResult;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.cart8014.entities.CartItem;
+import com.tigerff.springcloud.cart8014.entities.CommonResult;
+import com.tigerff.springcloud.cart8014.entities.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

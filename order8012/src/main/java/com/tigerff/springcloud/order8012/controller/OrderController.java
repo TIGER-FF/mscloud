@@ -1,7 +1,7 @@
 package com.tigerff.springcloud.order8012.controller;
 
 
-import com.tigerff.springcloud.commons.entities.*;
+import com.tigerff.springcloud.order8012.entities.*;
 import com.tigerff.springcloud.order8012.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

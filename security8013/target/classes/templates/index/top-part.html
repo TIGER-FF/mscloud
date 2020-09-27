@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<style>
+    ul.list-group.list-group-1 {
+        text-align: right;
+        padding: 5px 30px 0 0;
+        background: #eee;
+    }
+    li.list-group-item.list1 {
+        display: inline-block;
+        border: 0;
+        background: #eee;
+    }
+
+    ul.list-group.list-group-1 a{
+        color: #0e0e0e;
+
+    }
+
+</style>
+</head>
+<ul class="list-group list-group-1" id="top">
+    <li class="list-group-item list1"><a href="/">首页</a></li>
+    <!--代码改写    -->
+    <li class="list-group-item list1"><a href="/login" data-target="#myModalLogin" style="font-size: small;color:#e4393c "> <span sec:authorize="!isAuthenticated()"> 请登录</span></a></li>
+    <li role="presentation" class="dropdown list-group-item list1">
+        <span sec:authorize="isAuthenticated()"> <span sec:authentication="name"></span>,欢迎登陆</span>
+    </li>
+    <li class="list-group-item list1"><a th:href="@{${#httpServletRequest.getContextPath()}+'/logout'}"> <span sec:authorize="isAuthenticated()">  注销</span></a></li>
+    <li class="list-group-item list1"><a th:href="@{${#httpServletRequest.getContextPath()}+'/index/register'}"> <span sec:authorize="!isAuthenticated()">  注册</span></a></li>
+    <li class="list-group-item list1"><a th:href="@{${#httpServletRequest.getContextPath()}+'/log/cart'}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#c63205"></span> 购物车</a></li>
+    <li class="list-group-item list1"><a th:href="@{${#httpServletRequest.getContextPath()}+'/log/order'}"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 我的订单</a></li>
+</ul>

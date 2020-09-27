@@ -1,7 +1,7 @@
 package com.tigerff.springcloud.cart8014.dao;
 
-import com.tigerff.springcloud.commons.entities.CartItem;
-import com.tigerff.springcloud.commons.entities.Page;
+import com.tigerff.springcloud.cart8014.entities.CartItem;
+import com.tigerff.springcloud.cart8014.entities.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
