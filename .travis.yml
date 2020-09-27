@@ -4,6 +4,7 @@ env:
   - TEST_DIR=goods8011
   - TEST_DIR=order8012
   - TEST_DIR=cart8014
+  - TEST_DIR=security8013
 
 before_install:
   - cd $TEST_DIR
